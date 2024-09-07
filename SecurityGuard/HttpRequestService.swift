@@ -16,7 +16,6 @@ struct HttpRequestService {
     func Post<T: Codable>(url: URLConvertible, parameters: [String: Any], completion: @escaping DataCompletion<T>) {
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .responseData { response in
-                print(String(bytes: response.data!, encoding: .utf8)!)
                 guard let data = response.data else {
                     completion(.failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)))
                     return

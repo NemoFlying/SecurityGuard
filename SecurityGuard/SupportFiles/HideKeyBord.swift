@@ -5,4 +5,15 @@
 //  Created by mac on 2024/9/5.
 //
 
-import Foundation
+import SwiftUI
+
+extension View{
+    func hideKeybord(){
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil,
+            from: nil,
+            for: nil
+        )
+    }
+}

@@ -12,27 +12,9 @@ struct NavigationView: View {
     @State  var showMarker: Bool = true
     @State  var showSaftyArea:Bool = true
     @State  var enableCustomLocation:Bool = false
+
+    @State var models:[FeedbackViewModel] = []
     var body: some View {
-        //        VStack(){
-        //
-        ////            ZStack{
-        ////                Label("title3aaaaaaa",systemImage: "")
-        ////            }
-        ////
-        ////            VStack(){
-        ////                //Label("title",systemImage: "")
-        ////                Label("title2",systemImage: "")
-        ////                Label("title2",systemImage: "")
-        ////            }
-        ////
-        ////            HStack{
-        ////                Label("title4aaaab",systemImage: "")
-        ////            }
-        //        }
-        //        .padding(.leading,20)
-        //        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        //        .background(.gray)
-        //Spacer()
         NavigationStack {
             VStack
             {
@@ -92,24 +74,44 @@ struct NavigationView: View {
                                     .font(.system(size: 15))
                             }
                         }
-                        NavigationLink(destination: FeedbackView()){
+                        NavigationLink(destination: FeedbackListView(models: models)){
                             VStack
                             {
                                 Image(systemName: "person")
                                     .font(.title)
-                                Text("其他")
+                                Text("我的反馈")
                                     .font(.system(size: 15))
                             }
                         }
                         
                     }
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,alignment: .leading)
+                    .padding(.leading)
+                    
+                    HStack(spacing: 50, content: {
+                        NavigationLink(destination: FeedbackHandleView(models: models)){
+                            VStack
+                            {
+                                Image(systemName: "person")
+                                    .font(.title)
+                                Text("反馈处理")
+                                    .font(.system(size: 15))
+                            }
+                        }
+                        NavigationLink(destination: FeedbackListView(models: models)){
+                            VStack
+                            {
+                                Image(systemName: "person")
+                                    .font(.title)
+                                Text("xxxx")
+                                    .font(.system(size: 15))
+                            }
+                        }
+                    })
+                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/,alignment: .leading)
+                    .padding(.leading)
                     
                 }
-                
-//                Image("HomeImage")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(maxWidth: .infinity)
                 MapView(
                     showMarker: $showMarker,
                     showSaftyArea: $showSaftyArea,
@@ -117,11 +119,14 @@ struct NavigationView: View {
                     newCoordinate2D: $newCoordinate2D
                 )
             }
+            .onAppear{
+                models = TestData().FeedbackTestData()
+            }
             
         }
     }
 }
 
 #Preview {
-    NavigationView()
+    return NavigationView()
 }

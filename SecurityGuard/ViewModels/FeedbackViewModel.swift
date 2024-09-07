@@ -8,7 +8,7 @@
 import Foundation
 
 
-class FeebackViewModel: NSObject,Codable{
+class FeedbackViewModel: NSObject,Codable{
     var feebackTitle:String=""  //反馈标题
     var feebackCategory:String = "" //反馈类别
     var feebackArea:String = ""

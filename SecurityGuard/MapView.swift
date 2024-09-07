@@ -55,7 +55,7 @@ struct MapView: View {
                 
                 //customer Mark
                 if let newMark = newCoordinate2D{
-                    Marker("",coordinate: newMark)
+                    Marker("xxxx",coordinate: newMark)
                 }
                 
             }

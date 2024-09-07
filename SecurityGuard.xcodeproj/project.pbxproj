@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044126A82C89B67B0024E88A /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126A72C89B67B0024E88A /* FeedbackViewModel.swift */; };
+		044126AA2C89C1900024E88A /* FeedbackHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126A92C89C1900024E88A /* FeedbackHandleView.swift */; };
+		044126AC2C89C1FF0024E88A /* FeedbackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126AB2C89C1FF0024E88A /* FeedbackListView.swift */; };
+		044126AE2C89D55A0024E88A /* UnderlineModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126AD2C89D55A0024E88A /* UnderlineModifier.swift */; };
+		044126B02C8B41E90024E88A /* FeedbackCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126AF2C8B41E90024E88A /* FeedbackCardView.swift */; };
+		044126B22C8C3D8B0024E88A /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126B12C8C3D8B0024E88A /* TestData.swift */; };
+		044126B52C8C47870024E88A /* FeedbackHandleDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126B42C8C47870024E88A /* FeedbackHandleDetailView.swift */; };
+		044126B72C8C6C990024E88A /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126B62C8C6C990024E88A /* TestView.swift */; };
+		044126B92C8C84160024E88A /* FeedbackMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126B82C8C84160024E88A /* FeedbackMapView.swift */; };
+		044126BB2C8C89190024E88A /* FeedbackImageShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126BA2C8C89190024E88A /* FeedbackImageShowView.swift */; };
+		0446FB022C89AB99001B92D9 /* HideKeyBord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446FB012C89AB99001B92D9 /* HideKeyBord.swift */; };
 		0482C9B12C7780A600D4DB06 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C9B02C7780A600D4DB06 /* LocationTransform.swift */; };
 		04B8128E2C82C5280037CE4E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 04B8128D2C82C5280037CE4E /* Alamofire */; };
 		04B812902C83E7CC0037CE4E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8128F2C83E7CC0037CE4E /* MapView.swift */; };
@@ -30,6 +41,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044126A72C89B67B0024E88A /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
+		044126A92C89C1900024E88A /* FeedbackHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackHandleView.swift; sourceTree = "<group>"; };
+		044126AB2C89C1FF0024E88A /* FeedbackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackListView.swift; sourceTree = "<group>"; };
+		044126AD2C89D55A0024E88A /* UnderlineModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineModifier.swift; sourceTree = "<group>"; };
+		044126AF2C8B41E90024E88A /* FeedbackCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackCardView.swift; sourceTree = "<group>"; };
+		044126B12C8C3D8B0024E88A /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
+		044126B42C8C47870024E88A /* FeedbackHandleDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackHandleDetailView.swift; sourceTree = "<group>"; };
+		044126B62C8C6C990024E88A /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		044126B82C8C84160024E88A /* FeedbackMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMapView.swift; sourceTree = "<group>"; };
+		044126BA2C8C89190024E88A /* FeedbackImageShowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackImageShowView.swift; sourceTree = "<group>"; };
+		0446FB012C89AB99001B92D9 /* HideKeyBord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyBord.swift; sourceTree = "<group>"; };
 		0482C9B02C7780A600D4DB06 /* LocationTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTransform.swift; sourceTree = "<group>"; };
 		04B8128F2C83E7CC0037CE4E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		04B812912C83EB710037CE4E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -64,6 +86,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		044126B32C8C3D9B0024E88A /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+				044126B12C8C3D8B0024E88A /* TestData.swift */,
+			);
+			name = TestData;
+			sourceTree = "<group>";
+		};
+		0446FB002C89AB69001B92D9 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				0446FB012C89AB99001B92D9 /* HideKeyBord.swift */,
+				044126AD2C89D55A0024E88A /* UnderlineModifier.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
 		04B812932C83EBAD0037CE4E /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +131,8 @@
 		04E3362B2C74E89900651521 /* SecurityGuard */ = {
 			isa = PBXGroup;
 			children = (
+				044126B32C8C3D9B0024E88A /* TestData */,
+				0446FB002C89AB69001B92D9 /* SupportFiles */,
 				04B812932C83EBAD0037CE4E /* Models */,
 				04FE5F162C82B31600D8A6EC /* ViewModels */,
 				04FE5F002C7B0A3A00D8A6EC /* Views */,
@@ -134,6 +175,13 @@
 				04FE5F0B2C7F302F00D8A6EC /* ImagePicker.swift */,
 				04FE5F142C82B16A00D8A6EC /* HttpRequestView.swift */,
 				04B8128F2C83E7CC0037CE4E /* MapView.swift */,
+				044126A92C89C1900024E88A /* FeedbackHandleView.swift */,
+				044126AB2C89C1FF0024E88A /* FeedbackListView.swift */,
+				044126AF2C8B41E90024E88A /* FeedbackCardView.swift */,
+				044126B42C8C47870024E88A /* FeedbackHandleDetailView.swift */,
+				044126B62C8C6C990024E88A /* TestView.swift */,
+				044126B82C8C84160024E88A /* FeedbackMapView.swift */,
+				044126BA2C8C89190024E88A /* FeedbackImageShowView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -142,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				04B812912C83EB710037CE4E /* MapViewModel.swift */,
+				044126A72C89B67B0024E88A /* FeedbackViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -223,21 +272,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				0482C9B12C7780A600D4DB06 /* LocationTransform.swift in Sources */,
+				044126AE2C89D55A0024E88A /* UnderlineModifier.swift in Sources */,
 				04FE5F042C7B0F8900D8A6EC /* HomeView.swift in Sources */,
 				04E3362F2C74E89A00651521 /* ContentView.swift in Sources */,
 				04FE5F082C7B169E00D8A6EC /* PersonalView.swift in Sources */,
 				04FE5F152C82B16A00D8A6EC /* HttpRequestView.swift in Sources */,
 				04E3362D2C74E89900651521 /* SecurityGuardApp.swift in Sources */,
+				044126A82C89B67B0024E88A /* FeedbackViewModel.swift in Sources */,
 				04E3363C2C74E96000651521 /* LocationManager.swift in Sources */,
 				04B812922C83EB710037CE4E /* MapViewModel.swift in Sources */,
 				04B812902C83E7CC0037CE4E /* MapView.swift in Sources */,
+				044126B02C8B41E90024E88A /* FeedbackCardView.swift in Sources */,
+				044126B92C8C84160024E88A /* FeedbackMapView.swift in Sources */,
+				044126AC2C89C1FF0024E88A /* FeedbackListView.swift in Sources */,
 				04FE5F062C7B144300D8A6EC /* FeedbackView.swift in Sources */,
 				04FE5F0C2C7F302F00D8A6EC /* ImagePicker.swift in Sources */,
 				04FE5F182C82B35200D8A6EC /* ApiResultModel.swift in Sources */,
+				044126B52C8C47870024E88A /* FeedbackHandleDetailView.swift in Sources */,
+				044126B22C8C3D8B0024E88A /* TestData.swift in Sources */,
+				0446FB022C89AB99001B92D9 /* HideKeyBord.swift in Sources */,
 				04FE5F0A2C7E075800D8A6EC /* Navigation2View.swift in Sources */,
 				04FE5F0E2C820A0D00D8A6EC /* HttpRequestService.swift in Sources */,
 				04FE5F022C7B0B0600D8A6EC /* NavigationView.swift in Sources */,
 				04B812952C83EBDC0037CE4E /* LocationModel.swift in Sources */,
+				044126AA2C89C1900024E88A /* FeedbackHandleView.swift in Sources */,
+				044126B72C8C6C990024E88A /* TestView.swift in Sources */,
+				044126BB2C8C89190024E88A /* FeedbackImageShowView.swift in Sources */,
 				04E3363E2C76B5D000651521 /* SafeAreaManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
