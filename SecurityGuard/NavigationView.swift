@@ -14,6 +14,7 @@ struct NavigationView: View {
     @State  var enableCustomLocation:Bool = false
 
     @State var models:[FeedbackViewModel] = []
+    @State var models2:[InspectViewModel] = []
     var body: some View {
         NavigationStack {
             VStack
@@ -98,12 +99,21 @@ struct NavigationView: View {
                                     .font(.system(size: 15))
                             }
                         }
-                        NavigationLink(destination: FeedbackListView(models: models)){
+//                        NavigationLink(destination: FeedbackListView(models: models)){
+//                            VStack
+//                            {
+//                                Image(systemName: "person")
+//                                    .font(.title)
+//                                Text("xxxx")
+//                                    .font(.system(size: 15))
+//                            }
+//                        }
+                        NavigationLink(destination: InspectHomeView(vmodels: models2)){
                             VStack
                             {
                                 Image(systemName: "person")
                                     .font(.title)
-                                Text("xxxx")
+                                Text("巡检管理")
                                     .font(.system(size: 15))
                             }
                         }
@@ -121,6 +131,7 @@ struct NavigationView: View {
             }
             .onAppear{
                 models = TestData().FeedbackTestData()
+                models2 = TestData().InspectTestData()
             }
             
         }
