@@ -74,6 +74,6 @@ struct InspectHomeView: View {
 }
 
 #Preview {
-    var models = TestData().InspectTestData()
+    let models = TestData().InspectTestData()
     return InspectHomeView(vmodels: models)
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 import CoreLocation
 struct FeedbackListView: View {
-    var models:[FeedbackViewModel]
+    @State var models:[FeedbackViewModel]
     @State private var selection = 0
 //    @State private var isImageFullScreen = false
 //    @State private var selectImage:Image = Image(systemName: "bus")
@@ -62,18 +62,18 @@ struct FeedbackListView: View {
                 
                 if selection == 0{
                     
-                    ForEach(models,id: \.self){model in
+                    ForEach(0..<models.count,id: \.self){index in
                         //                if model.feebackHandleStatus = 0{
                         //
                         //                }
-                        FeedbackCardView(model: model)
+                        FeedbackCardView(model: models[index])
                             .padding([.leading,.trailing])
                     }
                 }
                 if selection == 1{
-                    ForEach(models,id: \.self){model in
-                        if model.feebackHandleStatus == 0{
-                            FeedbackCardView(model: model)
+                    ForEach(0..<models.count,id: \.self){index in
+                        if models[index].feedBackModel.feedbackHandleStatus == 0{
+                            FeedbackCardView(model: models[index])
                                 .padding([.leading,.trailing])
                         }
                         
@@ -81,9 +81,9 @@ struct FeedbackListView: View {
                 }
                 
                 if selection == 2{
-                    ForEach(models,id: \.self){model in
-                        if model.feebackHandleStatus == 1{
-                            FeedbackCardView(model: model)
+                    ForEach(0..<models.count,id: \.self){index in
+                        if models[index].feedBackModel.feedbackHandleStatus == 1{
+                            FeedbackCardView(model: models[index])
                                 .padding([.leading,.trailing])
                         }
                         
@@ -91,9 +91,9 @@ struct FeedbackListView: View {
                 }
                 
                 if selection == 3{
-                    ForEach(models,id: \.self){model in
-                        if model.feebackHandleStatus == 2{
-                            FeedbackCardView(model: model)
+                    ForEach(0..<models.count,id: \.self){index in
+                        if models[index].feedBackModel.feedbackHandleStatus == 2{
+                            FeedbackCardView(model: models[index])
                                 .padding([.leading,.trailing])
                         }
                         
@@ -103,8 +103,14 @@ struct FeedbackListView: View {
             
             Spacer()
             
+        }.onAppear{
+            /**获取数据*/
+            var vieModel = FeedbackViewModel()
+            vieModel.GetList(status: 0){ viewModels in
+                models = viewModels
+                
+            }
         }
-   
         
     }
     
@@ -114,7 +120,7 @@ struct FeedbackListView: View {
 }
 
 #Preview {
-    var models = TestData().FeedbackTestData()
+    let models = TestData().FeedbackTestData()
     
     return FeedbackListView(models: models)
 }

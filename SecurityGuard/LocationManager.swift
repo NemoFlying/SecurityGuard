@@ -52,7 +52,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         userLocation = locations.last
-        var newLocation = LocationTransform.wgs2gcj(
+        let newLocation = LocationTransform.wgs2gcj(
             wgsLat: userLocation!.coordinate.latitude,
             wgsLng: userLocation!.coordinate.longitude
         )

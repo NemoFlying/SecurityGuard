@@ -9,10 +9,13 @@ import SwiftUI
 import CoreLocation
 struct FeedbackView: View {
     
-    private var viewModel:FeedbackViewModel = FeedbackViewModel()
-    
+    @ObservedObject var viewModel:FeedbackViewModel = FeedbackViewModel()
+    private var httpRequest = HttpRequestService()
     @State private var isImagePickerPresented = false
     @State private var selectedImage: UIImage?
+    //@State private var takePhotos:[UIImage]=[]
+    //@State private var takePhotosUrl:[String]=[]
+    //@State private var takePhotos:[ImageUpLoadViewModel] = []
     
     @State var newCoordinate2D :CLLocationCoordinate2D?
     @State  var showMarker: Bool = true
@@ -24,10 +27,10 @@ struct FeedbackView: View {
     @State var errorMsg = ""
     
     //form
-    @State var feebackTitle:String=""
+    //@State var feebackTitle:String=""
     private var selectedCategorys = ["AAAAAA","BBBBB","CCCCCC","DDDDDD"]
     @State var selectedCategory:Int = 0
-    @State var feebackDetail = ""
+    //@State var feebackDetail = ""
     var body: some View {
         Form{
             Section(header: Text("问题反馈").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold())
@@ -39,7 +42,7 @@ struct FeedbackView: View {
                             .foregroundColor(.red)
                             .font(.system(size:10))
                     }
-                    TextField("控制在15个字内",text: $feebackTitle)
+                    TextField("控制在15个字内",text: $viewModel.feedBackModel.feedbackTitle)
                 }.onTapGesture {
                     hideKeybord()
                 }
@@ -83,9 +86,9 @@ struct FeedbackView: View {
                 {
                     Text("详细说明").font(.title2)
                     ZStack(alignment: .leading){
-                        TextEditor(text: $feebackDetail)
+                        TextEditor(text: $viewModel.feedBackModel.feedbackDetail)
                             .padding()
-                        if feebackDetail.isEmpty{
+                        if viewModel.feedBackModel.feedbackDetail.isEmpty{
                             Text("请输入内容")
                                 .foregroundColor(Color(UIColor.placeholderText))
                                 .padding(25)
@@ -103,92 +106,121 @@ struct FeedbackView: View {
                 
                 
                 
-                                Text(String(newCoordinate2D?.latitude ?? 0))
-                                Text(String(newCoordinate2D?.longitude ?? 0))
-                
-
-                
-                
-//                ZStack(alignment: .topTrailing)
-//                {
+//                                Text(String(newCoordinate2D?.latitude ?? 0))
+//                                Text(String(newCoordinate2D?.longitude ?? 0))
 //
-//                        Image(systemName: "trash")
-//                            .font(.title3)
-//                            .foregroundColor(.red)
-//                            .bold()
-//                            .zIndex(1000)
-//                            .onTapGesture {
-//                                selectedImage = nil
-//                            }
-//                    
-//                    
-//                    Image(systemName: "bus")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 100, height: 100)
-//                        .zIndex(-1)
-//                }
-                
-
-                VStack{
-                    if let selectedImage1 = selectedImage {
-                        ZStack(alignment: .topTrailing)
-                        {
-                            
-                            Image(systemName: "trash")
-                                .font(.title3)
-                                .foregroundColor(.red)
-                                .bold()
-                                .zIndex(1000)
-                                .onTapGesture {
-                                    selectedImage = nil
+                ScrollView(.horizontal,showsIndicators: false){
+                    HStack{
+                        
+                        ForEach(0..<viewModel.takePhotos.count,id:\.self){ index in
+                            let cIndex = index;
+                            ZStack(alignment: .topTrailing)
+                            {
+                                //if let upImage = takePhotos[index]{
+                                let upImage = viewModel.takePhotos[index]
+                                VStack{
+                                    Image(systemName: "trash")
+                                        .font(.title3)
+                                        .foregroundColor(.red)
+                                        .bold()
+                                        .onTapGesture {
+                                            viewModel.takePhotos.remove(at: cIndex)
+                                        }
+                                    Spacer()
+                                    if upImage.loadingStatus < 2 {
+                                        Image(systemName: upImage.loadingStatus == 0 ? "icloud.and.arrow.up":"rays")
+                                            .font(.title3)
+                                            .foregroundColor(.blue)
+                                            .bold()
+                                            .onTapGesture {
+                                                if upImage.loadingStatus == 0{
+                                                    upImage.loadingStatus = 1
+                                                    RefreshTakePhotos()
+                                                    httpRequest.UpLoadImage(
+                                                        image: upImage.image
+                                                    ){
+                                                        (result:Result<ApiResultModel<String>,Error>) in
+                                                        switch result {
+                                                        case .success(let data):
+                                                            if data.isSucess{
+                                                                upImage.imageUrl = data.data ?? ""
+                                                                upImage.loadingStatus = 2
+                                                                RefreshTakePhotos()
+                                                            }
+                                                            else{
+                                                                print(data.msg ?? "")
+                                                                upImage.loadingStatus = 0
+                                                                RefreshTakePhotos()
+                                                            }
+                                                        case .failure(let error):
+                                                            print(error)
+                                                            upImage.loadingStatus = 0
+                                                            RefreshTakePhotos()
+                                                        }
+                                                    }
+                                                }
+                                                
+                                            }
+                                    }
                                 }
-                            
-                            Image(uiImage: selectedImage1)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100, height: 100)
-                                .zIndex(-1)
+                                Image(uiImage: upImage.image)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 100, height: 100)
+                                    .zIndex(-1)
+                                //}
+                            }
                         }
                         
-                    } else {
-                        Button(action: {
-                            isImagePickerPresented = true
-                        })
-                        {
-                            Image(systemName: "camera")
-                                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                                .overlay{
-                                }
-                                .frame(width: 100,height: 100)
-                                .background(.gray)
+                        Image(systemName: "camera")
+                            .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                            .overlay{
+                            }
+                            .frame(width: 100,height: 100)
+                            .background(.gray)
+                            .onTapGesture {
+                                isImagePickerPresented.toggle()
+                            }
+                        
+                    }
+                    .fullScreenCover(isPresented: $isImagePickerPresented) {
+                        ImagePicker(){ newImage in
+                            let imageUpload = ImageUpLoadViewModel()
+                            imageUpload.image = newImage
+                            viewModel.takePhotos.append(imageUpload)
                             
-                        }
+                        }.ignoresSafeArea()
+                        
                     }
                 }
-                .sheet(isPresented: $isImagePickerPresented) {
-                    ImagePicker(selectedImage: $selectedImage)
-                        .ignoresSafeArea()
-                }
-                
-               // Spacer().symbolVariant(.none)
                 
                 Button(action: {
-                    viewModel.feebackTitle = self.feebackTitle
-                    viewModel.feebackCategory = selectedCategorys[selectedCategory]
-                    viewModel.feebackLocation = [newCoordinate2D?.latitude ?? 0,newCoordinate2D?.longitude ?? 0]
+                    if(viewModel.commitStatus == 1 || viewModel.commitStatus == 2){
+                        return
+                    }
+                    viewModel.feedBackModel.feedbackCategory = selectedCategorys[selectedCategory]
+                    viewModel.feedBackModel.feedbackLocations = [newCoordinate2D?.latitude ?? 0,newCoordinate2D?.longitude ?? 0]
                     
                     let re = viewModel.Verify();
                     if(!re.0){
                         errorMsg = re.1
                         showErrorMsg.toggle()
+                    }else
+                    {
+                        viewModel.feedBackModel.feedbackImages = []
+//                        ForEach(viewModel.takePhotos,id:\.self){ item in
+//                            viewModel.feedBackModel.feedbackImages.append(item.imageUrl)
+//                        }
+                        for item in viewModel.takePhotos{
+                            viewModel.feedBackModel.feedbackImages.append(item.imageUrl)
+                        }
+                        viewModel.Add()
                     }
                     
-                    
                 }, label:{
-                    Text("提交")
+                    Text(viewModel.commitStatus == 1 ? "提交中":(viewModel.commitStatus == 2 ? "已经提交":"提交"))
                         .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 50)
-                        .background(Color.blue)
+                        .background((viewModel.commitStatus == 1 || viewModel.commitStatus == 2 ) ? Color.gray : Color.blue)
                         .cornerRadius(8)
                         .foregroundColor(.white)
                         .bold()
@@ -198,12 +230,26 @@ struct FeedbackView: View {
                 .alert(isPresented: $showErrorMsg){
                     Alert(title: Text("校验失败"),message: Text("\(errorMsg)"))
                 }
+                .alert(isPresented: $viewModel.showMsg){
+                    if viewModel.commitStatus == 2{
+                        Alert(title: Text("保存成功"),message: Text("感谢你的参与"))
+                    }else{
+                        Alert(title: Text("保存失败"),message: Text("\(viewModel.commitMsg)"))
+                    }
+                }
                 
             }
            
             
+        }.onAppear{
+            //takePhotos2.images = takePhotos
         }
        
+    }
+    func RefreshTakePhotos(){
+        let tmp:[ImageUpLoadViewModel] = viewModel.takePhotos
+        viewModel.takePhotos.removeAll()
+        viewModel.takePhotos = tmp
     }
 }
 

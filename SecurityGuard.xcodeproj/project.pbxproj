@@ -26,6 +26,9 @@
 		044126CD2C8DA7270024E88A /* SelectTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126CC2C8DA7270024E88A /* SelectTestView.swift */; };
 		044126CF2C8DBB9B0024E88A /* InspectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126CE2C8DBB9B0024E88A /* InspectModel.swift */; };
 		044126D12C8DC0690024E88A /* ItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126D02C8DC0690024E88A /* ItemStore.swift */; };
+		044126D32C8DD2AB0024E88A /* PatrolInspectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126D22C8DD2AB0024E88A /* PatrolInspectionView.swift */; };
+		044126D52C8F0D310024E88A /* ImageUpLoadViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126D42C8F0D300024E88A /* ImageUpLoadViewModel.swift */; };
+		044126D72C8F41CA0024E88A /* FeedbackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126D62C8F41CA0024E88A /* FeedbackModel.swift */; };
 		0446FB022C89AB99001B92D9 /* HideKeyBord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0446FB012C89AB99001B92D9 /* HideKeyBord.swift */; };
 		0482C9B12C7780A600D4DB06 /* LocationTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482C9B02C7780A600D4DB06 /* LocationTransform.swift */; };
 		04B812902C83E7CC0037CE4E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8128F2C83E7CC0037CE4E /* MapView.swift */; };
@@ -66,6 +69,9 @@
 		044126CC2C8DA7270024E88A /* SelectTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTestView.swift; sourceTree = "<group>"; };
 		044126CE2C8DBB9B0024E88A /* InspectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectModel.swift; sourceTree = "<group>"; };
 		044126D02C8DC0690024E88A /* ItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemStore.swift; sourceTree = "<group>"; };
+		044126D22C8DD2AB0024E88A /* PatrolInspectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatrolInspectionView.swift; sourceTree = "<group>"; };
+		044126D42C8F0D300024E88A /* ImageUpLoadViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUpLoadViewModel.swift; sourceTree = "<group>"; };
+		044126D62C8F41CA0024E88A /* FeedbackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackModel.swift; sourceTree = "<group>"; };
 		0446FB012C89AB99001B92D9 /* HideKeyBord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideKeyBord.swift; sourceTree = "<group>"; };
 		0482C9B02C7780A600D4DB06 /* LocationTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTransform.swift; sourceTree = "<group>"; };
 		04B8128F2C83E7CC0037CE4E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 				044126C12C8D774C0024E88A /* InspectHomeView.swift */,
 				044126C32C8D777E0024E88A /* InspectCardView.swift */,
 				044126C72C8D82060024E88A /* EquipmentInspectView.swift */,
+				044126D22C8DD2AB0024E88A /* PatrolInspectionView.swift */,
 			);
 			path = InspectView;
 			sourceTree = "<group>";
@@ -143,6 +150,7 @@
 				04B812942C83EBDC0037CE4E /* LocationModel.swift */,
 				044126CE2C8DBB9B0024E88A /* InspectModel.swift */,
 				044126D02C8DC0690024E88A /* ItemStore.swift */,
+				044126D62C8F41CA0024E88A /* FeedbackModel.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -228,6 +236,7 @@
 				04B812912C83EB710037CE4E /* MapViewModel.swift */,
 				044126A72C89B67B0024E88A /* FeedbackViewModel.swift */,
 				044126C52C8D79890024E88A /* InspectViewModel.swift */,
+				044126D42C8F0D300024E88A /* ImageUpLoadViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 				04E3362F2C74E89A00651521 /* ContentView.swift in Sources */,
 				04FE5F082C7B169E00D8A6EC /* PersonalView.swift in Sources */,
 				044126C22C8D774C0024E88A /* InspectHomeView.swift in Sources */,
+				044126D52C8F0D310024E88A /* ImageUpLoadViewModel.swift in Sources */,
 				04FE5F152C82B16A00D8A6EC /* HttpRequestView.swift in Sources */,
 				04E3362D2C74E89900651521 /* SecurityGuardApp.swift in Sources */,
 				044126A82C89B67B0024E88A /* FeedbackViewModel.swift in Sources */,
@@ -322,6 +332,7 @@
 				04B812922C83EB710037CE4E /* MapViewModel.swift in Sources */,
 				044126CA2C8D8D910024E88A /* SelectedView.swift in Sources */,
 				04B812902C83E7CC0037CE4E /* MapView.swift in Sources */,
+				044126D32C8DD2AB0024E88A /* PatrolInspectionView.swift in Sources */,
 				044126B02C8B41E90024E88A /* FeedbackCardView.swift in Sources */,
 				044126B92C8C84160024E88A /* FeedbackMapView.swift in Sources */,
 				044126AC2C89C1FF0024E88A /* FeedbackListView.swift in Sources */,
@@ -340,6 +351,7 @@
 				044126AA2C89C1900024E88A /* FeedbackHandleView.swift in Sources */,
 				044126B72C8C6C990024E88A /* TestView.swift in Sources */,
 				044126BB2C8C89190024E88A /* FeedbackImageShowView.swift in Sources */,
+				044126D72C8F41CA0024E88A /* FeedbackModel.swift in Sources */,
 				04E3363E2C76B5D000651521 /* SafeAreaManager.swift in Sources */,
 				044126C82C8D82060024E88A /* EquipmentInspectView.swift in Sources */,
 				044126C42C8D777E0024E88A /* InspectCardView.swift in Sources */,

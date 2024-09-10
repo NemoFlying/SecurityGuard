@@ -23,7 +23,7 @@ struct SelectTestView: View {
 }
 
 #Preview {
-    var model = SelectModel()
+    let model = SelectModel()
    return SelectTestView(model: model)
 }
 

@@ -15,7 +15,7 @@ struct FeedbackCardView: View {
     @State private var isMapFullScreen = false
     
     private var handleStatus:String{
-        switch(model.feebackHandleStatus){
+        switch(model.feedBackModel.feedbackHandleStatus){
         case 0:
             return "待处理"
         case 1:
@@ -27,7 +27,7 @@ struct FeedbackCardView: View {
         }
     }
     private var handeColor:Color{
-        switch(model.feebackHandleStatus){
+        switch(model.feedBackModel.feedbackHandleStatus){
         case 0:
             return .red
         case 1:
@@ -42,27 +42,27 @@ struct FeedbackCardView: View {
     var body: some View {
         VStack(alignment: .leading,spacing: 10){
             HStack{
-                Text("\(model.feebackTitle)").font(.title2).bold()
+                Text("\(model.feedBackModel.feedbackTitle)").font(.title2).bold()
                 Spacer()
                 Text("2024.07.24")
             }
             .padding([.top,.leading,.trailing])
             
-            Text("\(model.feebackDetail)")
+            Text("\(model.feedBackModel.feedbackDetail)")
                 .font(.title3)
                 .padding([.leading,.trailing])
             
-            FeedbackImageShowView(feebackImageUrl: model.feebackImage)
+            FeedbackImageShowView(feebackImageUrl: model.feedBackModel.feedbackImages)
                 .padding([.leading,.trailing])
             
             HStack{
-                Text("\(model.feebackArea)")
+                Text("\(model.feedBackModel.feedbackArea)")
                     .font(.title2)
                     .bold()
                 FeedbackMapView(
                     mapLocation: .init(
-                        latitude: model.feebackLocation[0],
-                        longitude: model.feebackLocation[1]
+                        latitude: model.feedBackModel.feedbackLocations[0],
+                        longitude: model.feedBackModel.feedbackLocations[1]
                     )
                 )
                 Spacer()
@@ -94,15 +94,16 @@ struct FeedbackCardView: View {
 }
 
 #Preview {
-    @State var model = FeedbackViewModel()
-    model.feebackTitle = "道路积水"
-    model.feebackDetail = "厂区到宿舍那一段外围路，发现地下水冒出，地面积水严重，无法通过"
-    model.feebackArea = "A1"
-    model.feebackLocation = [30.582595601035205,103.718863233145]
-    model.feebackHandleStatus = 0
-    model.feebackImage = ["https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554"
-    ,"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554",
-                          "https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554"]
+    @State var model = TestData().FeedbackTestData()[1] 
+//    FeedbackViewModel()
+//    model.feebackTitle = "道路积水"
+//    model.feebackDetail = "厂区到宿舍那一段外围路，发现地下水冒出，地面积水严重，无法通过"
+//    model.feebackArea = "A1"
+//    model.feebackLocation = [30.582595601035205,103.718863233145]
+//    model.feebackHandleStatus = 0
+//    model.feebackImage = ["https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554"
+//    ,"https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554",
+//                          "https://nimg.ws.126.net/?url=http%3A%2F%2Fdingyue.ws.126.net%2F2024%2F0830%2Fa17a6600j00sj0z7700tzd000o000t6p.jpg&thumbnail=660x2147483647&quality=80&type=jpg","https://img2.baidu.com/it/u=1921763336,1933386608&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=554"]
     
     return FeedbackCardView(model: model)
 

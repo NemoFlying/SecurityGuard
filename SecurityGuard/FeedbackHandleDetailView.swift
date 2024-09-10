@@ -28,7 +28,7 @@ struct FeedbackHandleDetailView: View {
                         .padding([.top])
                         .padding([.bottom],1)
                         .foregroundColor(Color(.systemGray))
-                    Text("\(model.feebackTitle)")
+                    Text("\(model.feedBackModel.feedbackTitle)")
                         .font(.title2)
                         .frame(maxWidth: .infinity,alignment: .leading)
                         .padding([.bottom],4)
@@ -40,7 +40,7 @@ struct FeedbackHandleDetailView: View {
                         Text("反馈类别:")
                             .font(.title3)
                             .foregroundColor(Color(.systemGray))
-                        Text("\(model.feebackCategory)")
+                        Text("\(model.feedBackModel.feedbackCategory)")
                             .font(.title2)
                             .bold()
                     }
@@ -53,13 +53,13 @@ struct FeedbackHandleDetailView: View {
                         Text("问题位置:")
                             .font(.title3)
                             .foregroundColor(Color(.systemGray))
-                        Text("\(model.feebackArea)")
+                        Text("\(model.feedBackModel.feedbackArea)")
                             .font(.title2)
                             .bold()
                         FeedbackMapView(
                             mapLocation: .init(
-                                latitude: model.feebackLocation[0],
-                                longitude: model.feebackLocation[1]
+                                latitude: model.feedBackModel.feedbackLocations[0],
+                                longitude: model.feedBackModel.feedbackLocations[1]
                             )
                         )
                     }
@@ -74,7 +74,7 @@ struct FeedbackHandleDetailView: View {
                             .frame(maxWidth: .infinity,alignment: .leading)
                             .padding([.bottom],1)
                             .foregroundColor(Color(.systemGray))
-                        Text("\(model.feebackDetail)")
+                        Text("\(model.feedBackModel.feedbackDetail)")
                         //.lineLimit(3)
                             .padding(.all,10)
                             .font(.title3)
@@ -84,7 +84,7 @@ struct FeedbackHandleDetailView: View {
                     }
                     VStack
                     {
-                        FeedbackImageShowView(feebackImageUrl: model.feebackImage)
+                        FeedbackImageShowView(feebackImageUrl: model.feedBackModel.feedbackImages)
                     }
                     
                     //

@@ -14,8 +14,9 @@ struct FeedbackHandleView: View {
     var body: some View {
         ScrollView(.vertical,showsIndicators: false){
             VStack{
-                ForEach(models,id: \.self){model in
-                    if model.feebackHandleStatus == 0{
+                ForEach(0..<models.count,id: \.self){index in
+                    let model = models[index]
+                    if model.feedBackModel.feedbackHandleStatus == 0{
                         FeedbackCardView(model: model)
                             .padding([.leading,.trailing])
                             .onTapGesture{
@@ -36,6 +37,6 @@ struct FeedbackHandleView: View {
 }
 
 #Preview {
-    var models = TestData().FeedbackTestData()
+    let models = TestData().FeedbackTestData()
     return FeedbackHandleView(models: models)
 }
