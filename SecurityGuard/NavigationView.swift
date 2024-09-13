@@ -12,9 +12,9 @@ struct NavigationView: View {
     @State  var showMarker: Bool = true
     @State  var showSaftyArea:Bool = true
     @State  var enableCustomLocation:Bool = false
-
     @State var models:[FeedbackViewModel] = []
     @State var models2:[InspectViewModel] = []
+    @ObservedObject var viewModel = NavigationViewModel()
     var body: some View {
         NavigationStack {
             VStack
@@ -34,6 +34,10 @@ struct NavigationView: View {
                             Spacer()
                             Image(systemName: "book")
                                 .padding(.trailing)
+                            Image(systemName: "arrowshape.turn.up.backward")
+                                .onTapGesture {
+                                    viewModel.needLogin = true;
+                                }
                         }
                         
                     }
@@ -75,7 +79,7 @@ struct NavigationView: View {
                                     .font(.system(size: 15))
                             }
                         }
-                        NavigationLink(destination: FeedbackListView(models: models)){
+                        NavigationLink(destination: FeedbackListView()){
                             VStack
                             {
                                 Image(systemName: "person")
@@ -90,13 +94,15 @@ struct NavigationView: View {
                     .padding(.leading)
                     
                     HStack(spacing: 50, content: {
-                        NavigationLink(destination: FeedbackHandleView(models: models)){
-                            VStack
-                            {
-                                Image(systemName: "person")
-                                    .font(.title)
-                                Text("反馈处理")
-                                    .font(.system(size: 15))
+                        if viewModel.userRole == "超级管理员" {
+                            NavigationLink(destination: FeedbackHandleView()){
+                                VStack
+                                {
+                                    Image(systemName: "person")
+                                        .font(.title)
+                                    Text("反馈处理")
+                                        .font(.system(size: 15))
+                                }
                             }
                         }
 //                        NavigationLink(destination: FeedbackListView(models: models)){
@@ -108,13 +114,15 @@ struct NavigationView: View {
 //                                    .font(.system(size: 15))
 //                            }
 //                        }
-                        NavigationLink(destination: InspectHomeView(vmodels: models2)){
-                            VStack
-                            {
-                                Image(systemName: "person")
-                                    .font(.title)
-                                Text("巡检管理")
-                                    .font(.system(size: 15))
+                        if viewModel.userRole == "巡检人员" {
+                            NavigationLink(destination: InspectHomeView()){
+                                VStack
+                                {
+                                    Image(systemName: "person")
+                                        .font(.title)
+                                    Text("巡检管理")
+                                        .font(.system(size: 15))
+                                }
                             }
                         }
                     })
@@ -133,6 +141,12 @@ struct NavigationView: View {
                 models = TestData().FeedbackTestData()
                 models2 = TestData().InspectTestData()
             }
+            .fullScreenCover(isPresented: $viewModel.needLogin,
+                              content: {
+                 LoginView()
+             }).alert(isPresented: $viewModel.showAlter){
+                 Alert(title: Text("登陆失败"),message: Text("\(viewModel.alterMsg)"))
+             }
             
         }
     }

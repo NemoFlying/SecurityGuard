@@ -6,3 +6,9 @@
 //
 
 import Foundation
+class UserModel:NSObject,Codable{
+    var token:String=""
+    var userName:String=""
+    var userRole:String=""
+    //var password:String = ""
+}

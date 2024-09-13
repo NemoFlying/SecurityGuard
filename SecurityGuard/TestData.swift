@@ -52,56 +52,56 @@ class TestData:NSObject{
     
     func InspectTestData() -> [InspectViewModel]{
         var re:[InspectViewModel] = []
-        let re1:InspectModel = InspectModel()
-        re1.inspectId = 1
-        re1.inspectTitle = "厂区巡检-A区"
-        re1.inspectDeadLineDate="2024-7-24"
-        re1.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        re1.isExpired = false
-        re1.inspectType = 1
-        re1.inspectStatus = 1
-        let reViewModel = InspectViewModel(model: re1)
-        re.append(reViewModel)
+        let re1 = InspectViewModel()
+        re1.model.inspectId = 1
+        re1.model.inspectTitle = "厂区巡检-A区"
+        re1.model.inspectDeadLineDate="2024-7-24"
+        re1.model.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        re1.model.isExpired = false
+        re1.model.inspectType = 1
+        re1.model.inspectStatus = 1
+        //let reViewModel = InspectViewModel(model: re1)
+        re.append(re1)
         
-        let re2:InspectModel = InspectModel()
-        re2.inspectId = 2
-        re2.inspectTitle = "厂区巡检-B区"
-        re2.inspectDeadLineDate="2024-7-24"
-        re2.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        re2.isExpired = false
-        re2.inspectType = 1
-        re2.inspectStatus = 0
+        let re2 = InspectViewModel()
+        re2.model.inspectId = 2
+        re2.model.inspectTitle = "厂区巡检-B区"
+        re2.model.inspectDeadLineDate="2024-7-24"
+        re2.model.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        re2.model.isExpired = false
+        re2.model.inspectType = 1
+        re2.model.inspectStatus = 0
         
-        let reViewModel2 = InspectViewModel(model: re2)
-        re.append(reViewModel2)
+        //let reViewModel2 = InspectViewModel(model: re2)
+        re.append(re2)
         
-        let re3:InspectModel = InspectModel()
-        re3.inspectId = 3
-        re3.inspectTitle = "变压器巡检"
-        re3.inspectDeadLineDate="2024-7-24"
-        re3.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        re3.isExpired = false
-        re3.inspectType = 0
-        re3.inspectStatus = 0
+        let re3 = InspectViewModel()
+        re3.model.inspectId = 3
+        re3.model.inspectTitle = "变压器巡检"
+        re3.model.inspectDeadLineDate="2024-7-24"
+        re3.model.inspectDesc = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        re3.model.isExpired = false
+        re3.model.inspectType = 0
+        re3.model.inspectStatus = 0
         
         let rr3:InspectItemModel = InspectItemModel()
         rr3.inspectItemName = "电源指示是否正常"
         rr3.inspectItemType = 1
         rr3.inspectItemSelectValues=["是","否"]
-        re3.items.append(rr3)
+        re3.model.items.append(rr3)
         
         let rr31:InspectItemModel = InspectItemModel()
         rr31.inspectItemName = "三相负载是否平衡"
         rr31.inspectItemType = 1
         rr31.inspectItemSelectValues=["是","否"]
-        re3.items.append(rr31)
+        re3.model.items.append(rr31)
         
         let rr32:InspectItemModel = InspectItemModel()
         rr32.inspectItemName = "当前电压数值"
         rr32.inspectItemType = 0
-        re3.items.append(rr32)
-        let reViewModel3 = InspectViewModel(model: re3)
-        re.append(reViewModel3)
+        re3.model.items.append(rr32)
+        //let reViewModel3 = InspectViewModel(model: re3)
+        re.append(re3)
         return re
     }
 }

@@ -202,9 +202,8 @@ struct FeedbackView: View {
                     viewModel.feedBackModel.feedbackLocations = [newCoordinate2D?.latitude ?? 0,newCoordinate2D?.longitude ?? 0]
                     
                     let re = viewModel.Verify();
-                    if(!re.0){
-                        errorMsg = re.1
-                        showErrorMsg.toggle()
+                    if(!re){
+                        return
                     }else
                     {
                         viewModel.feedBackModel.feedbackImages = []
@@ -227,14 +226,11 @@ struct FeedbackView: View {
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         
                 })
-                .alert(isPresented: $showErrorMsg){
-                    Alert(title: Text("校验失败"),message: Text("\(errorMsg)"))
-                }
-                .alert(isPresented: $viewModel.showMsg){
+                .alert(isPresented: $viewModel.showAlter){
                     if viewModel.commitStatus == 2{
                         Alert(title: Text("保存成功"),message: Text("感谢你的参与"))
                     }else{
-                        Alert(title: Text("保存失败"),message: Text("\(viewModel.commitMsg)"))
+                        Alert(title: Text("保存失败"),message: Text("\(viewModel.alterMsg)"))
                     }
                 }
                 

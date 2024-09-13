@@ -8,20 +8,25 @@
 import Foundation
 import Alamofire
 import UIKit
-  
+import SwiftUI
+
 // 定义一个类型别名，用于闭包签名，便于管理泛型类型
 typealias DataCompletion<T> = (Result<T, Error>) -> Void
-  
-struct HttpRequestService {
+ 
+class HttpRequestService {
+    
+    @AppStorage("token") var token:String = ""
+    
     // 发送 POST 请求并处理响应以解码为泛型类型 T
     func Post<T: Codable>(url: URLConvertible, parameters: [String: Any], completion: @escaping DataCompletion<T>) {
-        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default)
+        let headers: HTTPHeaders = ["Content-Type" : "application/json" , "Authorization":"Bearer \(token)"]
+        AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default,headers: headers)
             .responseData { response in
                 guard let data = response.data else {
                     completion(.failure(AFError.responseSerializationFailed(reason: .inputDataNilOrZeroLength)))
                     return
                 }
-                //print(String(data: data, encoding: .utf8))
+                 print(String(data: data, encoding: .utf8))
                 // 尝试将数据解码为泛型类型 T
                 let decoder = JSONDecoder()
                 do {
@@ -69,18 +74,4 @@ struct HttpRequestService {
            return "\(millisecond)"
        }
 
-
-    
-    
 }
-  
-//// 使用示例
-//let url = URL(string: "https://api.example.com/data")!
-//DataService().data(url: url, parameters: ["key": "value"]) { result in
-//    switch result {
-//    case .success(let data):
-//        print(data)
-//    case .failure(let error):
-//        print(error)
-//    }
-//}

@@ -8,6 +8,7 @@
 import SwiftUI
 import CoreLocation
 struct HomeView: View {
+    @ObservedObject var viewModel = HomeViewModel()
     var tab:Int = 1
     @State var newCoordinate2D :CLLocationCoordinate2D?
     @State  var showMarker: Bool = true
@@ -38,7 +39,15 @@ struct HomeView: View {
                 .tabItem {
                     Image(systemName: "person")
                 }
+        }.onAppear{
+            //let login = UserViewModel();
+            //login.Login()
         }
+//        .fullScreenCover(isPresented: $viewModel.needLogin,
+//                          content: {
+//             LoginView()
+//         })
+        
     }
 }
 

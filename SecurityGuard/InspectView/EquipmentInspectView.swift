@@ -47,7 +47,7 @@ struct EquipmentInspectView: View {
                         HStack{
                             Text("\(item.inspectItemName)")
                             Spacer()
-                            TextField("", text: $vmodel.model.items[index].inspectItemsStringValue)
+                            TextField("", text: $vmodel.model.items[index].inspectItemStringValue)
                                 .frame(width: 80)
                                 .border(Color.black)
                         }
@@ -60,7 +60,7 @@ struct EquipmentInspectView: View {
                         SelectedView(
                             showTitle: "\(item.inspectItemName)",
                             selectedItems: $vmodel.model.items[index].inspectItemSelectValues,
-                            selectedValue: $vmodel.model.items[index].inspectItemsIntValue
+                            selectedValue: $vmodel.model.items[index].inspectItemIntValue
                         )
                         
 //                        SelectedView(

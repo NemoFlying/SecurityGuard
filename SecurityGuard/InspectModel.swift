@@ -17,6 +17,21 @@ class InspectModel: NSObject,Codable
     var inspectStatus:Int = 0 //0:未开始，1表示结束
     var items:[InspectItemModel] = [] //巡检项目
     
+    func toDictionary() -> [String: Any] {
+        return [
+            "inspectId": inspectId,
+            "inspectTitle": inspectTitle,
+            "inspectDesc": inspectDesc,
+            "inspectDeadLineDate":inspectDeadLineDate,
+            "isExpired":isExpired,
+            "inspectType":inspectType,
+            "inspectStatus":inspectStatus,
+            "items":items,
+            //"feedbackSolution":feedbackSolution,
+            //"feedbackIsTrue":feedbackIsTrue,
+            //"feedbackSafeLevel":feedbackSafeLevel
+        ]
+    }
 }
 
 class InspectItemModel:NSObject,Codable
@@ -24,6 +39,6 @@ class InspectItemModel:NSObject,Codable
     var inspectItemName:String = ""
     var inspectItemType:Int = 0  //0表示文本输入，1表示选择
     var inspectItemSelectValues:[String]=[]
-    var inspectItemsStringValue:String=""
-    var inspectItemsIntValue:Int=0
+    var inspectItemStringValue:String=""
+    var inspectItemIntValue:Int=0
 }

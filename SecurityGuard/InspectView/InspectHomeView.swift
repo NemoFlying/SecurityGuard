@@ -9,8 +9,10 @@ import SwiftUI
 
 struct InspectHomeView: View {
     @State private var selection = 0
-    var vmodels:[InspectViewModel]
+    @State var  vmodels:[InspectViewModel]=[]
+    var vmodel:InspectViewModel = InspectViewModel()
     var backgoundColor:Color = Color(red: 0.0, green: 0.25, blue: 0.1)
+    @State private var isLoadingMore = false
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -65,6 +67,21 @@ struct InspectHomeView: View {
                     }
                 }
             }
+        }.onAppear{
+            /**获取数据*/
+            if !isLoadingMore{
+                isLoadingMore = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 模拟网络请求延迟
+                    //loadMoreItems()
+                    vmodel.GetList(status: 0){ viewModels in
+                        for item in viewModels{
+                            vmodels.append(item)
+                        }
+                        isLoadingMore = false
+                    }
+                }
+            }
+            
         }
         
         
@@ -74,6 +91,6 @@ struct InspectHomeView: View {
 }
 
 #Preview {
-    let models = TestData().InspectTestData()
-    return InspectHomeView(vmodels: models)
+    //let models = TestData().InspectTestData()
+    return InspectHomeView()
 }

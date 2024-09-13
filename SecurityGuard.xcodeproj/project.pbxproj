@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		043EEFD92C932C3A00331A6B /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EEFD82C932C3A00331A6B /* UserModel.swift */; };
+		043EEFDB2C932C9D00331A6B /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EEFDA2C932C9D00331A6B /* UserViewModel.swift */; };
+		043EEFDD2C932CE700331A6B /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043EEFDC2C932CE700331A6B /* CommonViewModel.swift */; };
 		044126A82C89B67B0024E88A /* FeedbackViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126A72C89B67B0024E88A /* FeedbackViewModel.swift */; };
 		044126AA2C89C1900024E88A /* FeedbackHandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126A92C89C1900024E88A /* FeedbackHandleView.swift */; };
 		044126AC2C89C1FF0024E88A /* FeedbackListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044126AB2C89C1FF0024E88A /* FeedbackListView.swift */; };
@@ -34,6 +37,11 @@
 		04B812902C83E7CC0037CE4E /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B8128F2C83E7CC0037CE4E /* MapView.swift */; };
 		04B812922C83EB710037CE4E /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B812912C83EB710037CE4E /* MapViewModel.swift */; };
 		04B812952C83EBDC0037CE4E /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B812942C83EBDC0037CE4E /* LocationModel.swift */; };
+		04E2B5D72C947408007278D9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B5D62C947408007278D9 /* LoginView.swift */; };
+		04E2B5DA2C9474A1007278D9 /* StyleTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B5D92C9474A1007278D9 /* StyleTemplates.swift */; };
+		04E2B5DC2C9474D4007278D9 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B5DB2C9474D4007278D9 /* RegistrationView.swift */; };
+		04E2B5DE2C947BB0007278D9 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B5DD2C947BB0007278D9 /* HomeViewModel.swift */; };
+		04E2B5E02C948411007278D9 /* NavigationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E2B5DF2C948411007278D9 /* NavigationViewModel.swift */; };
 		04E3362D2C74E89900651521 /* SecurityGuardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3362C2C74E89900651521 /* SecurityGuardApp.swift */; };
 		04E3362F2C74E89A00651521 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E3362E2C74E89A00651521 /* ContentView.swift */; };
 		04E336312C74E89B00651521 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04E336302C74E89B00651521 /* Assets.xcassets */; };
@@ -51,6 +59,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		043EEFD82C932C3A00331A6B /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		043EEFDA2C932C9D00331A6B /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		043EEFDC2C932CE700331A6B /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		044126A72C89B67B0024E88A /* FeedbackViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewModel.swift; sourceTree = "<group>"; };
 		044126A92C89C1900024E88A /* FeedbackHandleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackHandleView.swift; sourceTree = "<group>"; };
 		044126AB2C89C1FF0024E88A /* FeedbackListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackListView.swift; sourceTree = "<group>"; };
@@ -77,6 +88,11 @@
 		04B8128F2C83E7CC0037CE4E /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		04B812912C83EB710037CE4E /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		04B812942C83EBDC0037CE4E /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
+		04E2B5D62C947408007278D9 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		04E2B5D92C9474A1007278D9 /* StyleTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleTemplates.swift; sourceTree = "<group>"; };
+		04E2B5DB2C9474D4007278D9 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		04E2B5DD2C947BB0007278D9 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		04E2B5DF2C948411007278D9 /* NavigationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewModel.swift; sourceTree = "<group>"; };
 		04E336292C74E89900651521 /* SecurityGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecurityGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04E3362C2C74E89900651521 /* SecurityGuardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityGuardApp.swift; sourceTree = "<group>"; };
 		04E3362E2C74E89A00651521 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -151,8 +167,17 @@
 				044126CE2C8DBB9B0024E88A /* InspectModel.swift */,
 				044126D02C8DC0690024E88A /* ItemStore.swift */,
 				044126D62C8F41CA0024E88A /* FeedbackModel.swift */,
+				043EEFD82C932C3A00331A6B /* UserModel.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		04E2B5D82C94746A007278D9 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				04E2B5D92C9474A1007278D9 /* StyleTemplates.swift */,
+			);
+			path = Style;
 			sourceTree = "<group>";
 		};
 		04E336202C74E89900651521 = {
@@ -174,6 +199,7 @@
 		04E3362B2C74E89900651521 /* SecurityGuard */ = {
 			isa = PBXGroup;
 			children = (
+				04E2B5D82C94746A007278D9 /* Style */,
 				044126B32C8C3D9B0024E88A /* TestData */,
 				0446FB002C89AB69001B92D9 /* SupportFiles */,
 				04B812932C83EBAD0037CE4E /* Models */,
@@ -226,6 +252,8 @@
 				044126B62C8C6C990024E88A /* TestView.swift */,
 				044126B82C8C84160024E88A /* FeedbackMapView.swift */,
 				044126BA2C8C89190024E88A /* FeedbackImageShowView.swift */,
+				04E2B5D62C947408007278D9 /* LoginView.swift */,
+				04E2B5DB2C9474D4007278D9 /* RegistrationView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -237,6 +265,10 @@
 				044126A72C89B67B0024E88A /* FeedbackViewModel.swift */,
 				044126C52C8D79890024E88A /* InspectViewModel.swift */,
 				044126D42C8F0D300024E88A /* ImageUpLoadViewModel.swift */,
+				043EEFDA2C932C9D00331A6B /* UserViewModel.swift */,
+				043EEFDC2C932CE700331A6B /* CommonViewModel.swift */,
+				04E2B5DD2C947BB0007278D9 /* HomeViewModel.swift */,
+				04E2B5DF2C948411007278D9 /* NavigationViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -323,8 +355,12 @@
 				04FE5F042C7B0F8900D8A6EC /* HomeView.swift in Sources */,
 				04E3362F2C74E89A00651521 /* ContentView.swift in Sources */,
 				04FE5F082C7B169E00D8A6EC /* PersonalView.swift in Sources */,
+				043EEFD92C932C3A00331A6B /* UserModel.swift in Sources */,
+				043EEFDD2C932CE700331A6B /* CommonViewModel.swift in Sources */,
+				04E2B5DA2C9474A1007278D9 /* StyleTemplates.swift in Sources */,
 				044126C22C8D774C0024E88A /* InspectHomeView.swift in Sources */,
 				044126D52C8F0D310024E88A /* ImageUpLoadViewModel.swift in Sources */,
+				04E2B5DC2C9474D4007278D9 /* RegistrationView.swift in Sources */,
 				04FE5F152C82B16A00D8A6EC /* HttpRequestView.swift in Sources */,
 				04E3362D2C74E89900651521 /* SecurityGuardApp.swift in Sources */,
 				044126A82C89B67B0024E88A /* FeedbackViewModel.swift in Sources */,
@@ -334,13 +370,16 @@
 				04B812902C83E7CC0037CE4E /* MapView.swift in Sources */,
 				044126D32C8DD2AB0024E88A /* PatrolInspectionView.swift in Sources */,
 				044126B02C8B41E90024E88A /* FeedbackCardView.swift in Sources */,
+				043EEFDB2C932C9D00331A6B /* UserViewModel.swift in Sources */,
 				044126B92C8C84160024E88A /* FeedbackMapView.swift in Sources */,
 				044126AC2C89C1FF0024E88A /* FeedbackListView.swift in Sources */,
 				044126CD2C8DA7270024E88A /* SelectTestView.swift in Sources */,
 				04FE5F062C7B144300D8A6EC /* FeedbackView.swift in Sources */,
 				04FE5F0C2C7F302F00D8A6EC /* ImagePicker.swift in Sources */,
 				04FE5F182C82B35200D8A6EC /* ApiResultModel.swift in Sources */,
+				04E2B5DE2C947BB0007278D9 /* HomeViewModel.swift in Sources */,
 				044126B52C8C47870024E88A /* FeedbackHandleDetailView.swift in Sources */,
+				04E2B5E02C948411007278D9 /* NavigationViewModel.swift in Sources */,
 				044126B22C8C3D8B0024E88A /* TestData.swift in Sources */,
 				0446FB022C89AB99001B92D9 /* HideKeyBord.swift in Sources */,
 				04FE5F0E2C820A0D00D8A6EC /* HttpRequestService.swift in Sources */,
@@ -350,6 +389,7 @@
 				044126CF2C8DBB9B0024E88A /* InspectModel.swift in Sources */,
 				044126AA2C89C1900024E88A /* FeedbackHandleView.swift in Sources */,
 				044126B72C8C6C990024E88A /* TestView.swift in Sources */,
+				04E2B5D72C947408007278D9 /* LoginView.swift in Sources */,
 				044126BB2C8C89190024E88A /* FeedbackImageShowView.swift in Sources */,
 				044126D72C8F41CA0024E88A /* FeedbackModel.swift in Sources */,
 				04E3363E2C76B5D000651521 /* SafeAreaManager.swift in Sources */,

@@ -15,6 +15,9 @@ class FeedbackModel:NSObject,Codable{
     var feedbackDetail:String = "" //反馈明细
     var feedbackImages:[String]=[] //反馈图片
     var feedbackHandleStatus:Int = 0 //处理状态 0 未处理，1处理中 2已完成
+    var feedbackSolution:String = ""
+    var feedbackIsTrue:Int = 0
+    var feedbackSafeLevel:String = ""
     
     func toDictionary() -> [String: Any] {
         return [
@@ -25,7 +28,10 @@ class FeedbackModel:NSObject,Codable{
             "feedbackImages":feedbackImages,
             "feedbackLocations":feedbackLocations,
             "feedbackDetail":feedbackDetail,
-            "feedbackHandleStatus":feedbackHandleStatus
+            "feedbackHandleStatus":feedbackHandleStatus,
+            "feedbackSolution":feedbackSolution,
+            "feedbackIsTrue":feedbackIsTrue,
+            "feedbackSafeLevel":feedbackSafeLevel
         ]
     }
 }

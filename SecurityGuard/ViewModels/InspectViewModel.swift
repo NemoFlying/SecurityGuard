@@ -17,33 +17,58 @@ class InspectViewModel: ObservableObject
 //    var inspectType:Int = 0   // 0表示设备巡检 ，1表示巡场
 //    var inspectStatus:Int = 0 //0:未开始，1表示结束
 //    var items:[InspectDetailModel] = [] //巡检项目
-    @Published var model:InspectModel
-    init(model: InspectModel) {
-        self.model = model
+    @Published var model:InspectModel = InspectModel()
+//    init(model: InspectModel) {
+//        self.model = model
+//    }
+    
+    
+    
+    func GetList(status:Int,completion: @escaping ([InspectViewModel]) -> Void){
+        do{
+            //commitStatus = 1  //提交中
+            let urlString = "https://bf23851vm360.vicp.fun/api/InspectModel/Get"
+            let par = ["aaa":"aaa"]
+            let httpHelper = HttpRequestService()
+            httpHelper.Post(
+                url: urlString,
+                parameters: par,
+                completion: {
+                    (result:Result<ApiResultModel<[InspectModel]>,Error>) in
+                    //self.showAlter = true
+                    switch result {
+                    case .success(let data):
+                        if data.isSucess{
+                            //self.commitStatus = 2
+                            var viewModels:[InspectViewModel] = []
+                            if let reDatas = data.data{
+                                for item in reDatas{
+                                    let viewModel = InspectViewModel()
+                                    viewModel.model = item
+                                    viewModels.append(viewModel)
+                                }
+                                completion(viewModels)
+                            }
+                        }
+                        else{
+                            //self.commitStatus = 3  //提交失败
+                            //self.alterMsg = data.msg ?? ""
+                        }
+                    case .failure(let error):
+                        print("Error encoding error:\(error)")
+                       // self.commitStatus = 3  //提交失败
+                       // self.alterMsg = "系统错误"
+                    }
+                }
+            )
+            
+            
+        }catch{
+            print("Error encoding error:\(error)")
+        }
     }
+    
+    
 }
 
-//class InspectDetailModel:ObservableObject,Codable
-//{
-//    var inspectItemName:String = ""
-//    var inspectItemType:Int = 0  //0表示文本输入，1表示选择
-//    var inspectItemSelectValues:[String]=[]
-//    var inspectItemsStringValue:String=""
-//    @Published var inspectItemsIntValue:Int=0
-//    
-//    enum CodingKeys:CodingKey{
-//        case inspectItemsIntValue
-//    }
-//    
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        inspectItemsIntValue = try container.decode(Int.self, forKey: .inspectItemsIntValue)
-//        super.init()
-//    }
-//    
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: CodingKeys.self)
-//        try container.encode(inspectItemsIntValue, forKey: .inspectItemsIntValue)
-//    }
-//    
-//}
+

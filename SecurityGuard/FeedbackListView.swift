@@ -8,17 +8,10 @@
 import SwiftUI
 import CoreLocation
 struct FeedbackListView: View {
-    @State var models:[FeedbackViewModel]
+    @State var models:[FeedbackViewModel]=[]
     @State private var selection = 0
-//    @State private var isImageFullScreen = false
-//    @State private var selectImage:Image = Image(systemName: "bus")
-//    @State private var isMapFullScreen = false
-//    
-//    @State  var showMarker: Bool = true
-//    @State  var showSaftyArea:Bool = false
-//    @State  var enableCustomLocation:Bool = false
-//    @State var newCoordinate2D :CLLocationCoordinate2D?
-    
+    @State private var isLoadingMore = false
+    var vieModel = FeedbackViewModel()
     private var backgoundColor:Color = Color(red: 0.0, green: 0.25, blue: 0.1)
     var body: some View {
         VStack(alignment: .leading){
@@ -99,28 +92,39 @@ struct FeedbackListView: View {
                         
                     }
                 }
+                if isLoadingMore{
+                    ProgressView()
+                }
+            }.onAppear{
+                /**获取数据*/
+                if !isLoadingMore{
+                    isLoadingMore = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 模拟网络请求延迟
+                        //loadMoreItems()
+                        vieModel.GetList(status: 0){ viewModels in
+                            for item in viewModels{
+                                models.append(item)
+                            }
+                            isLoadingMore = false
+                        }
+                    }
+                }
+                
             }
+            
             
             Spacer()
             
-        }.onAppear{
-            /**获取数据*/
-            var vieModel = FeedbackViewModel()
-            vieModel.GetList(status: 0){ viewModels in
-                models = viewModels
-                
-            }
         }
         
     }
     
-    init(models: [FeedbackViewModel]) {
-        self.models = models
-    }
+//    init(models: [FeedbackViewModel]) {
+//        self.models = models
+//    }
 }
 
 #Preview {
-    let models = TestData().FeedbackTestData()
-    
-    return FeedbackListView(models: models)
+    //let models = TestData().FeedbackTestData()
+    return FeedbackListView()
 }
