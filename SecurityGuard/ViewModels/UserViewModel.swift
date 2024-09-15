@@ -28,6 +28,7 @@ class UserViewModel: CommonViewModel{
                         self.token = data.data?.token ?? ""
                         self.userRole = data.data?.userRole ?? "普通用户"
                         self.model = data.data ?? UserModel()
+//                        self.functionViewMode = FunctionViewModel().getRoleFunction(roleName: self.userRole)
                         self.needLogin = false
                     }
                     else{

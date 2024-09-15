@@ -10,7 +10,7 @@ class FeedbackModel:NSObject,Codable{
     var feedbackId:Int = 0
     var feedbackTitle:String=""  //反馈标题
     var feedbackCategory:String = "" //反馈类别
-    var feedbackArea:String = ""
+    var feedbackArea:String = "A"
     var feedbackLocations:[Double]=[] //反馈位置
     var feedbackDetail:String = "" //反馈明细
     var feedbackImages:[String]=[] //反馈图片

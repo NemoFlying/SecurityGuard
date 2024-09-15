@@ -130,7 +130,7 @@ struct NavigationView: View {
                     .padding(.leading)
                     
                 }
-                MapView(
+                MapView1(
                     showMarker: $showMarker,
                     showSaftyArea: $showSaftyArea,
                     enableCustomLocation: $enableCustomLocation,

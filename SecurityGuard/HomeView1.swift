@@ -7,7 +7,7 @@
 
 import SwiftUI
 import CoreLocation
-struct HomeView: View {
+struct HomeView1: View {
     @ObservedObject var viewModel = HomeViewModel()
     var tab:Int = 1
     @State var newCoordinate2D :CLLocationCoordinate2D?
@@ -26,7 +26,7 @@ struct HomeView: View {
                     Image(systemName: "contextualmenu.and.cursorarrow")
                 }
            
-            MapView(
+            MapView1(
                 showMarker: $showMarker,
                 showSaftyArea: $showSaftyArea,
                 enableCustomLocation: $enableCustomLocation,

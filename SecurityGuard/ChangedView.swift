@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct ChangedView: View {
+    var viewName:String
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        //InspectHomeView
+        //FeedbackHandleView
+        //FeedbackView
+        //FeedbackListView
+        switch viewName{
+        case "FeedbackView":
+            FeedbackView()
+        case "FeedbackListView":
+            FeedbackListView()
+        case "FeedbackHandleView":
+            FeedbackHandleView()
+        case "InspectHomeView":
+            InspectHomeView()
+        default:
+            NotFoundView()
+        }
     }
 }
 
-#Preview {
-    ChangedView()
-}
+//#Preview {
+//    ChangedView()
+//}

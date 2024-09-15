@@ -13,7 +13,7 @@ enum SideMenuModel:Int,CaseIterable{
    // case shop
     case order
     case repassword
-    case logout
+    //case logout
     
     var titlee:String{
         switch self{
@@ -21,7 +21,7 @@ enum SideMenuModel:Int,CaseIterable{
         //case .shop:return "积分商城"
         case .order:return "我的订单"
         case .repassword:return "修改密码"
-        case .logout:return "退出登陆"
+        //case .logout:return "退出登陆"
         }
     }
     var imageName:String{
@@ -30,7 +30,7 @@ enum SideMenuModel:Int,CaseIterable{
             //case .shop:return "bag.badge.plus"
             case .order:return "list.bullet.clipboard"
             case .repassword:return "lock.open.rotation"
-            case .logout:return "arrow.left.square"
+            //case .logout:return "arrow.left.square"
         }
     }
 }

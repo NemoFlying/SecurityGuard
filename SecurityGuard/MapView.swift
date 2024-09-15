@@ -12,9 +12,9 @@ struct MapView: View {
     //@State private var cameraPosition:MapCameraPosition = .userLocation(fallback: .automatic)
     @State private var cameraPosition:MapCameraPosition = .automatic
     @State private var locationManager = LocationManager()
-    var showMarker: Bool = false
-    var showSaftyArea: Bool = false
-    var enableCustomLocation: Bool = false
+    @State var showMarker: Bool = false
+    @State var showSaftyArea: Bool = false
+    @State var enableCustomLocation: Bool = false
     @State var mapViewModel : MapViewModel?
     @Binding var newCoordinate2D :CLLocationCoordinate2D?
     var body: some View {
@@ -85,22 +85,23 @@ struct MapView: View {
                     }
                 }
             }
-            
-            HStack(){
-                Text("低")
-                    .foregroundStyle(.white)
-                    .padding([.leading,.trailing],8)
-                    .background(.green)
-                Text("中")
-                    .foregroundStyle(.white)
-                    .padding([.leading,.trailing],8)
-                    .background(.yellow)
-                Text("高")
-                    .foregroundStyle(.white)
-                    .padding([.leading,.trailing],8)
-                    .background(.pink)
-            }.padding([.leading],50)
-                .padding([.top,.trailing],10)
+            if showSaftyArea{
+                HStack(){
+                    Text("低")
+                        .foregroundStyle(.white)
+                        .padding([.leading,.trailing],8)
+                        .background(.green)
+                    Text("中")
+                        .foregroundStyle(.white)
+                        .padding([.leading,.trailing],8)
+                        .background(.yellow)
+                    Text("高")
+                        .foregroundStyle(.white)
+                        .padding([.leading,.trailing],8)
+                        .background(.pink)
+                }.padding([.leading],50)
+                    .padding([.top,.trailing],10)
+            }
         }
     }
 }

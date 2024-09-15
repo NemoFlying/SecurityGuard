@@ -89,7 +89,8 @@ struct FeedbackHandleDetailView: View {
                     
                     //
                     
-                }.navigationTitle(Text("问题处理"))
+                }
+                    .navigationTitle(Text("问题处理"))
                     .navigationBarTitleDisplayMode(.inline)
                     .navigationBarItems(leading: closeBtn,trailing: saveBtn)
                     .frame(maxWidth: .infinity,alignment: .leading)

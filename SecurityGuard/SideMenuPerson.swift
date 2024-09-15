@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SideMenuPerson: View {
     @Binding var isShowing:Bool
+    @ObservedObject var viewModel = HomeViewModel()
     var body: some View {
         ZStack(alignment:.topTrailing) {
              // 关闭按钮
@@ -27,11 +28,11 @@ struct SideMenuPerson: View {
                     .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     .padding(.bottom,16)
                 //这里的姓名 部门 角色 积分 反馈了多少单子 这些需要从其他地方获取
-                Text("李明")
+                Text(viewModel.userName)
                     .font(.system(size: 24,weight: .semibold))
                     .padding(.bottom,18)
-                Text("工艺二科").padding(.bottom,18)
-                Text("员工").padding(.bottom,18)
+                Text(viewModel.userRole).padding(.bottom,18)
+                //Text("员工").padding(.bottom,18)
                 HStack(spacing:12){
                     HStack(spacing:4){
                         Text("112").bold()
