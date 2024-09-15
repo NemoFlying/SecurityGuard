@@ -67,7 +67,7 @@ struct FeedbackView: View {
                     }
                 }
                 .sheet(isPresented: $showMap){
-                    MapView(
+                    MapView1(
                         showMarker: $showMarker,
                         showSaftyArea: $showSaftyArea,
                         enableCustomLocation: $enableCustomLocation,
