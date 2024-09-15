@@ -241,24 +241,11 @@ struct FeedbackView: View {
                 }
                 .navigationTitle(Text("问题反馈").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/).bold())
                 .navigationBarTitleDisplayMode(.inline)
-                .navigationBarItems(leading: closeBtn)
                 .background(.white)
             }
         }
     }
     
-    private var closeBtn:some View{
-        Button(action: {
-            self.presentationMode.wrappedValue.dismiss()
-        }) {
-            HStack{
-                Image(systemName: "xmark.circle.fill")
-                    .font(.system(size: 20))
-                    .foregroundColor(Color(.systemGray3))
-            }
-            
-        }
-    }
     
     
     func RefreshTakePhotos(){
