@@ -140,7 +140,7 @@ struct FeedbackHandleDetailView: View {
             }
         }
         .alert(isPresented: $viewModel.showAlter){
-            if viewModel.commitStatus == 2{
+            if viewModel.httpRequestStatus == 2{
                 Alert(title: Text("保存成功"),message: Text(""))
             }else{
                 Alert(title: Text("保存失败"),message: Text("\(viewModel.alterMsg)"))
@@ -164,7 +164,7 @@ struct FeedbackHandleDetailView: View {
     }
     private var saveBtn:some View{
         Button(action: {
-            if(viewModel.commitStatus == 1 || viewModel.commitStatus == 2){
+            if(viewModel.httpRequestStatus == 1 || viewModel.httpRequestStatus == 2){
                 return
             }
             viewModel.feedBackModel.feedbackIsTrue = selectedIsTrue
@@ -177,11 +177,11 @@ struct FeedbackHandleDetailView: View {
             {
                 viewModel.Update()
             }
-            if(viewModel.commitStatus == 2){
+            if(viewModel.httpRequestStatus == 2){
                 self.presentationMode.wrappedValue.dismiss()
             }
         }, label: {
-            Text(viewModel.commitStatus == 1 ? "保存中":(viewModel.commitStatus == 2 ? "已保存":"保存"))
+            Text(viewModel.httpRequestStatus == 1 ? "保存中":(viewModel.httpRequestStatus == 2 ? "已保存":"保存"))
         })
     }
     
