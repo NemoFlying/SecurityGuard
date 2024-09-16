@@ -28,4 +28,28 @@ class CommonViewModel:  ObservableObject{
     @AppStorage("userRole") var userRole:String = "admin"
     //@AppStorage("userRole1") var userRole1:[String] = ["admin","ss"]
     //@AppStorage("functionViewMode") var functionViewMode:[FunctionViewModel] = []
+    
+    
+    func Post<T:Codable>(urlString:String,parameters:[String:Any] ,completion:@escaping (T)->Void){
+        httpRequestStatus = 1  //提交中
+        let httpHelper = HttpRequestService()
+        httpHelper.Post(
+            url: baseUrl + urlString,
+            parameters: parameters,
+            completion: {
+                (result:Result<T,Error>) in
+                switch result {
+                case .success(let data):
+                    completion(data)
+                case .failure(let error):
+                    self.showAlter = true
+                    self.httpRequestStatus = 3  //提交失败
+                    self.alterMsg = "系统错误"
+                }
+            }
+        )
+    }
+    
+    
+    
 }

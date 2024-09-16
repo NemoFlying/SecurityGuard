@@ -52,8 +52,14 @@ struct FeedbackView: View {
                                 hideKeybord()
                             }
                         
+                        //根据选取地图位置带出区域
                         HStack{
-                            Text("问题位置 [\(selectArea)]").font(.title2)
+                            HStack{
+                                Text("问题位置 ").font(.title2)
+                                Text("[\(viewModel.feedBackModel.feedbackArea)]")
+                                    .font(.title2).bold()
+                            }
+                            
                             Spacer()
                             Button(action:{
                                 self.showMap.toggle()
@@ -69,17 +75,27 @@ struct FeedbackView: View {
                                 newCoordinate2D: $newCoordinate2D
                             )
                             .overlay(
-                                    Button("关闭"){
-                                        self.showMap.toggle()
-                                        selectArea = "A1"
-                                    }
-                                        .background(.blue)
-                                        .foregroundColor(.white)
-                                        .padding()
+                                Button("关闭"){
+                                    self.showMap.toggle()
+                                    viewModel.feedBackModel.feedbackLocations = [newCoordinate2D?.latitude ?? 0.0,newCoordinate2D?.longitude ?? 0.0]
+                                    viewModel.GetArea()
+                                }
+                                    .background(.blue)
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .font(.title)
                                 ,alignment: .topTrailing
                             )
                         }
                         
+                        VStack(alignment: .leading){
+                            HStack{
+                                Text("详细地址").font(.title2)
+                            }
+                            TextField("精确到楼层",text: $viewModel.feedBackModel.feedbackAreaDetail)
+                        }.onTapGesture {
+                            hideKeybord()
+                        }
                         
                         VStack(alignment: .leading)
                         {
@@ -117,6 +133,7 @@ struct FeedbackView: View {
                                     {
                                         //if let upImage = takePhotos[index]{
                                         let upImage = viewModel.takePhotos[index]
+                                        let scallImage = upImage.image.scaledToSize(newSize: CGSize(width: 200, height: 200))
                                         VStack{
                                             Image(systemName: "trash")
                                                 .font(.title3)
@@ -136,7 +153,7 @@ struct FeedbackView: View {
                                                             upImage.loadingStatus = 1
                                                             RefreshTakePhotos()
                                                             httpRequest.UpLoadImage(
-                                                                image: upImage.image
+                                                                image: scallImage ?? upImage.image
                                                             ){
                                                                 (result:Result<ApiResultModel<String>,Error>) in
                                                                 switch result {
@@ -194,7 +211,7 @@ struct FeedbackView: View {
                         }
                         
                         Button(action: {
-                            if(viewModel.commitStatus == 1 || viewModel.commitStatus == 2){
+                            if(viewModel.httpRequestStatus == 1 || viewModel.httpRequestStatus == 2){
                                 return
                             }
                             viewModel.feedBackModel.feedbackCategory = selectedCategorys[selectedCategory]
@@ -216,9 +233,9 @@ struct FeedbackView: View {
                             }
                             
                         }, label:{
-                            Text(viewModel.commitStatus == 1 ? "提交中":(viewModel.commitStatus == 2 ? "已经提交":"提交"))
+                            Text(viewModel.httpRequestStatus == 1 ? "提交中":(viewModel.httpRequestStatus == 2 ? "已经提交":"提交"))
                                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, minHeight: 50)
-                                .background((viewModel.commitStatus == 1 || viewModel.commitStatus == 2 ) ? Color.gray : Color.blue)
+                                .background((viewModel.httpRequestStatus == 1 || viewModel.httpRequestStatus == 2 ) ? Color.gray : Color.blue)
                                 .cornerRadius(8)
                                 .foregroundColor(.white)
                                 .bold()
@@ -226,10 +243,10 @@ struct FeedbackView: View {
                             
                         })
                         .alert(isPresented: $viewModel.showAlter){
-                            if viewModel.commitStatus == 2{
-                                Alert(title: Text("保存成功"),message: Text("感谢你的参与"))
+                            if viewModel.httpRequestStatus == 2{
+                                Alert(title: Text(""),message: Text("\(viewModel.alterMsg)"))
                             }else{
-                                Alert(title: Text("保存失败"),message: Text("\(viewModel.alterMsg)"))
+                                Alert(title: Text("Error"),message: Text("\(viewModel.alterMsg)"))
                             }
                         }
                         

@@ -9,9 +9,6 @@ import SwiftUI
 import CoreLocation
 
 struct FeedbackMapView: View {
-    @State  var showMarker: Bool = true
-    @State  var showSaftyArea:Bool = false
-    @State  var enableCustomLocation:Bool = false
     @State  var newCoordinate2D :CLLocationCoordinate2D?
     @State  var isShowLocationOnMap:Bool = false
     var mapLocation:CLLocationCoordinate2D
@@ -23,10 +20,10 @@ struct FeedbackMapView: View {
                 
             }
             .fullScreenCover(isPresented: $isShowLocationOnMap, content: {
-                MapView1(
-                    showMarker: $showMarker,
-                    showSaftyArea: $showSaftyArea,
-                    enableCustomLocation: $enableCustomLocation,
+                MapView(
+                    showMarker: true,
+                    showSaftyArea: false,
+                    enableCustomLocation: false,
                     newCoordinate2D: $newCoordinate2D
                 )
                 .overlay(
@@ -37,7 +34,7 @@ struct FeedbackMapView: View {
                         .foregroundColor(.white)
                         .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 50)
                         .bold()
-                        .font(.title2)
+                        .font(.title)
                     ,alignment: .topTrailing
                 )
             })

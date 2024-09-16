@@ -68,6 +68,20 @@ struct FeedbackHandleDetailView: View {
                     .underline(color: Color(.systemGray))
                     .padding([.bottom],5)
                     
+                    Text("详细地址:")
+                        .font(.title3)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                        .padding([.bottom],1)
+                        .foregroundColor(Color(.systemGray))
+                    Text("\(viewModel.feedBackModel.feedbackAreaDetail)")
+                        .font(.title2)
+                        .frame(maxWidth: .infinity,alignment: .leading)
+                        .padding([.bottom],4)
+                        .underline(color: Color(.systemGray))
+                        .padding([.bottom],5)
+                        .bold()
+                    
+                    
                     VStack{
                         Text("详细说明:")
                             .font(.title3)

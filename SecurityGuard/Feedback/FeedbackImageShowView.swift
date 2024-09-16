@@ -10,6 +10,7 @@ import SwiftUI
 struct FeedbackImageShowView: View {
     var feebackImageUrl:[String]
     var baseUrl:String = "https://bf23851vm360.vicp.fun"
+    //var baseUrl:String = ""
     @State var isImageFullScreen:Bool = false
     @State var selectedImage:Image = Image(systemName: "bus")
     var body: some View {
@@ -33,18 +34,6 @@ struct FeedbackImageShowView: View {
                                     self.isImageFullScreen.toggle()
                                     
                                 }
-                                .fullScreenCover(isPresented: $isImageFullScreen, content: {
-                                    self.selectedImage.resizable()
-                                        .scaledToFit()
-                                        .overlay(
-                                            Button("关闭"){
-                                                self.isImageFullScreen.toggle()
-                                            }.bold()
-                                                .background(.blue)
-                                                .foregroundColor(.white)
-                                            ,alignment: .topTrailing
-                                        )
-                                })
                         case .failure:
                             Text("Failed to load")
                         @unknown default:
@@ -52,8 +41,25 @@ struct FeedbackImageShowView: View {
                         }
                     }
                 }
-            }
+                selectedImage
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 0)
+                    .hidden()
+            }.fullScreenCover(isPresented: $isImageFullScreen, content: {
+                selectedImage.resizable()
+                    .scaledToFit()
+                    .overlay(
+                        Button("关闭"){
+                            self.isImageFullScreen.toggle()
+                        }.bold()
+                            .background(.blue)
+                            .foregroundColor(.white)
+                        ,alignment: .topTrailing
+                    )
+            })
         }
+       
     }
 }
 

@@ -9,13 +9,13 @@ import Foundation
 import SwiftUI
 
 
-class FeedbackViewModel:  ObservableObject{
+class FeedbackViewModel:  CommonViewModel{
     @Published var feedBackModel = FeedbackModel()
     @Published var takePhotos:[ImageUpLoadViewModel] = []
-    @Published var commitStatus:Int = 0  //提交状态，0表示为提交，1，表示提交中，2表示提交成功，3表示提交失败
+   // @Published var commitStatus:Int = 0  //提交状态，0表示为提交，1，表示提交中，2表示提交成功，3表示提交失败
     
-    @Published var alterMsg:String = ""
-    @Published var showAlter:Bool = false
+    //@Published var alterMsg:String = ""
+    //@Published var showAlter:Bool = false
 //    var commitLabel:String{
 //        get{
 //            
@@ -62,93 +62,86 @@ class FeedbackViewModel:  ObservableObject{
     }
     
     
-    func Add(){
-        let urlString = "https://bf23851vm360.vicp.fun/api/Feedback/Insert"
-        AddOrUpdate(urlString: urlString)
-    }
+    
     
     func GetList(status:Int,completion: @escaping ([FeedbackViewModel]) -> Void){
-        do{
-            commitStatus = 1  //提交中
-            let urlString = "https://bf23851vm360.vicp.fun/api/Feedback/Get"
-            let par = feedBackModel.toDictionary()
-            let httpHelper = HttpRequestService()
-            httpHelper.Post(
-                url: urlString,
-                parameters: par,
-                completion: {
-                    (result:Result<ApiResultModel<[FeedbackModel]>,Error>) in
-                    self.showAlter = true
-                    switch result {
-                    case .success(let data):
-                        if data.isSucess{
-                            self.commitStatus = 2
-                            var viewModels:[FeedbackViewModel] = []
-                            if let reDatas = data.data{
-                                for item in reDatas{
-                                    let viewModel = FeedbackViewModel()
-                                    viewModel.feedBackModel = item
-                                    viewModels.append(viewModel)
-                                }
-                                completion(viewModels)
-                            }
+        let par = feedBackModel.toDictionary()
+        Post(
+            urlString: "/Feedback/Get",
+            parameters: par,
+            completion: {
+                (data:ApiResultModel<[FeedbackModel]>) in
+                if data.isSucess{
+                    self.httpRequestStatus = 0
+                    self.showAlter = false
+                    var viewModels:[FeedbackViewModel] = []
+                    if let reDatas = data.data{
+                        for item in reDatas{
+                            let viewModel = FeedbackViewModel()
+                            viewModel.feedBackModel = item
+                            viewModels.append(viewModel)
                         }
-                        else{
-                            self.commitStatus = 3  //提交失败
-                            self.alterMsg = data.msg ?? ""
-                        }
-                    case .failure(let error):
-                        print("Error encoding error:\(error)")
-                        self.commitStatus = 3  //提交失败
-                        self.alterMsg = "系统错误"
+                        completion(viewModels)
                     }
                 }
-            )
-            
-            
-        }catch{
-            print("Error encoding error:\(error)")
-        }
+                else{
+                    self.showAlter = true
+                    self.httpRequestStatus = 3  //提交失败
+                    self.alterMsg = data.msg ?? ""
+                }
+            }
+        )
     }
 
+    func Add(){
+        let urlString = "/Feedback/Insert"
+        AddOrUpdate(urlString: urlString)
+    }
     func Update(){
-        let urlString = "https://bf23851vm360.vicp.fun/api/Feedback/Handle"
+        let urlString = "/Feedback/Handle"
         AddOrUpdate(urlString: urlString)
     }
     
     func AddOrUpdate(urlString:String){
-        do{
-            commitStatus = 1  //提交中
-            
-            let par = feedBackModel.toDictionary()
-            let httpHelper = HttpRequestService()
-            httpHelper.Post(
-                url: urlString,
-                parameters: par,
-                completion: {
-                    (result:Result<ApiResultModel<String>,Error>) in
+        let par = feedBackModel.toDictionary()
+        Post(
+            urlString: urlString,
+            parameters: par,
+            completion: {
+                (data:ApiResultModel<String>) in
+                if data.isSucess{
+                    self.httpRequestStatus = 2  //提交成功
+                    self.alterMsg = "保存成功"
                     self.showAlter = true
-                    switch result {
-                    case .success(let data):
-                        if data.isSucess{
-                            self.commitStatus = 2  //提交成功
-                        }
-                        else{
-                            self.commitStatus = 3  //提交失败
-                            self.alterMsg = data.msg ?? ""
-                        }
-                    case .failure(let error):
-                        print("Error encoding error:\(error)")
-                        self.commitStatus = 3  //提交失败
-                        self.alterMsg = "系统错误"
-                    }
                 }
-            )
-            
-            
-        }catch{
-            print("Error encoding error:\(error)")
-        }
+                else{
+                    self.httpRequestStatus = 3  //失败
+                    self.alterMsg = data.msg ?? ""
+                    self.showAlter = true
+                }
+            }
+        )
+    }
+    
+    func GetArea(){
+        let par = feedBackModel.toDictionary()
+        Post(
+            urlString: "/Feedback/GetArea",
+            parameters: par,
+            completion: {
+                (data:ApiResultModel<String>) in
+                if data.isSucess{
+                    self.httpRequestStatus = 0
+                    self.feedBackModel.feedbackArea = data.data ?? ""
+                    self.showAlter = false
+                }
+                else{
+                    self.httpRequestStatus = 3  //失败
+                    self.alterMsg = data.msg ?? ""
+                    self.showAlter = true
+                }
+            }
+        )
     }
     
 }
