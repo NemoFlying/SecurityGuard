@@ -26,7 +26,7 @@ class FunctionViewModel: ObservableObject
         let fun2 = FunctionViewModel()
         fun2.functionTitle = "巡检管理"
         fun2.functionImage = "person.2.badge.gearshape"
-        fun2.functionRole = ["巡检人员"]
+        fun2.functionRole = ["超级管理员"]
         allFunctions.append(fun2)
         let fun3 = FunctionViewModel()
         fun3.functionTitle = "反馈处理"
@@ -55,6 +55,7 @@ class FunctionViewModel: ObservableObject
         fun7.functionTitle = "积分商城"
         fun7.functionImage = "giftcard"
         fun7.functionRole = []
+        fun7.functionView = "ContentView"
         allFunctions.append(fun7)
     }
     

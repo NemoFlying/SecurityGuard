@@ -23,6 +23,18 @@ struct InspectCardView: View {
             Text("巡检内容描述")
             Text("\(vmodel.model.inspectDesc)")
             HStack{
+                ///Text("\(model.feedBackModel.feedbackArea)")
+                Text("\(vmodel.model.inspectArea)")
+                    .font(.title2)
+                    .bold()
+                if vmodel.model.inspectLocations.count>=2{
+                    FeedbackMapView(
+                        mapLocation: .init(
+                            latitude: vmodel.model.inspectLocations[0],
+                            longitude: vmodel.model.inspectLocations[1]
+                        )
+                    )
+                }
                 Spacer()
                 
                 if(vmodel.model.inspectStatus == 0){

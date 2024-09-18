@@ -12,6 +12,7 @@ import CoreLocation
 class LocationManager: NSObject, CLLocationManagerDelegate{
     @ObservationIgnored let manager = CLLocationManager()
     var userLocation:CLLocation?
+    var lastLocation:CLLocationCoordinate2D?
     var userLocationTrack:[CLLocationCoordinate2D]=[]
     var clatitude : CLLocationDegrees{
         userLocation?.coordinate.latitude ?? 30.581991
@@ -23,8 +24,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
         didSet{
             startLocationServices()
         }
-    }
-    
+    } /**开启或者停用位置追踪*/
+    var getLocaitonOnce:Bool = false
     
     override init() {
         super.init()
@@ -57,18 +58,33 @@ class LocationManager: NSObject, CLLocationManagerDelegate{
             wgsLng: userLocation!.coordinate.longitude
         )
         if(userLocation != nil){
+            lastLocation = CLLocationCoordinate2D(latitude: newLocation.gcjLat, longitude: newLocation.gcjLng)
             userLocationTrack.append(
                 .init(
                     latitude: newLocation.gcjLat,
                     longitude: newLocation.gcjLng
                 )
             )
+            if(getLocaitonOnce){
+                manager.stopUpdatingLocation()
+            }
         }
         
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
     }
+    
+    func getCurrentLocation(){
+        /**开启定位*/
+        //清空已经记录的轨迹
+        userLocationTrack = []
+        IsRecordLocation = true
+        getLocaitonOnce = true
+    }
+ 
+    
+    
     
     
 }

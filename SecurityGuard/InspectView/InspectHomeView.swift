@@ -13,6 +13,8 @@ struct InspectHomeView: View {
     var vmodel:InspectViewModel = InspectViewModel()
     var backgoundColor:Color = Color(red: 0.0, green: 0.25, blue: 0.1)
     @State private var isLoadingMore = false
+    @State var isShowDetail:Bool = false
+    @State var selectModel:InspectViewModel?
     var body: some View {
         VStack(alignment: .leading){
             HStack{
@@ -64,7 +66,20 @@ struct InspectHomeView: View {
                     if(vmodels[index].model.inspectStatus == 1){
                         InspectCardView(vmodel: vmodels[index])
                             .padding([.leading,.trailing])
+                            .onTapGesture{
+                                self.selectModel = vmodels[index]
+                                isShowDetail = true
+                            }
+                            .fullScreenCover(isPresented: $isShowDetail, content: {
+                                if let selectModel = selectModel{
+                                    InspectResultView(vmodel: selectModel)
+                                }
+                            })
                     }
+                }
+                if let selectModel = selectModel{
+                    InspectResultView(vmodel: selectModel)
+                        .hidden()
                 }
             }
         }.onAppear{

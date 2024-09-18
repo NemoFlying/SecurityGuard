@@ -23,6 +23,8 @@ struct ChangedView: View {
             FeedbackHandleView()
         case "InspectHomeView":
             InspectHomeView()
+        case "ContentView":
+            ContentView()
         default:
             NotFoundView()
         }

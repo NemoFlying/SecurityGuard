@@ -13,6 +13,7 @@ struct SafetyHomeView: View {
     @State private var Site = ""
     //@State var functionModels:[FunctionViewModel]=[]
     @State var newCoordinate2D :CLLocationCoordinate2D?
+    @State var isfullScreenMap :Bool = false
     @ObservedObject var viewModel = HomeViewModel()
     var body: some View {
         ZStack{
@@ -82,12 +83,40 @@ struct SafetyHomeView: View {
                         .font(.system(size: 28))
                     .foregroundColor(.red)
                 }
-                MapView(
-                    showMarker: true,
-                    showSaftyArea: true,
-                    enableCustomLocation: false,
-                    newCoordinate2D: $newCoordinate2D
-                )
+                ZStack(alignment:.topTrailing){
+                    MapView(
+                        showMarker: true,
+                        showSaftyArea: true,
+                        enableCustomLocation: false,
+                        newCoordinate2D: $newCoordinate2D
+                    )
+                    Image(systemName: "arrow.up.forward.app")
+                        .font(.title)
+                        .background(.blue)
+                        .foregroundColor(.white)
+                        .onTapGesture {
+                            self.isfullScreenMap.toggle()
+                        }.fullScreenCover(isPresented: $isfullScreenMap, content: {
+                            MapView(
+                                showMarker: true,
+                                showSaftyArea: true,
+                                enableCustomLocation: false,
+                                newCoordinate2D: $newCoordinate2D
+                            )
+                            .overlay(
+                                Button("关闭"){
+                                    self.isfullScreenMap.toggle()
+                                }
+                                    .background(.blue)
+                                    .foregroundColor(.white)
+                                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/,height: 50)
+                                    .bold()
+                                    .font(.title)
+                                ,alignment: .topTrailing
+                            )
+                        })
+                }
+                
             }
         }
         .onAppear{

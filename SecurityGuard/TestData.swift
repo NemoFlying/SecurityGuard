@@ -83,6 +83,7 @@ class TestData:NSObject{
         re3.model.isExpired = false
         re3.model.inspectType = 0
         re3.model.inspectStatus = 0
+        re3.model.inspectLocations = [30.582595601035205,103.718863233145]
         
         let rr3:InspectItemModel = InspectItemModel()
         rr3.inspectItemName = "电源指示是否正常"

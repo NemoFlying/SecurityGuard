@@ -42,6 +42,7 @@ class CommonViewModel:  ObservableObject{
                 case .success(let data):
                     completion(data)
                 case .failure(let error):
+                    print(error)
                     self.showAlter = true
                     self.httpRequestStatus = 3  //提交失败
                     self.alterMsg = "系统错误"

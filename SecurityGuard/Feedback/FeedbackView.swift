@@ -21,7 +21,7 @@ struct FeedbackView: View {
     @State var showErrorMsg = false
     @State var errorMsg = ""
 
-    private var selectedCategorys = ["AAAAAA","BBBBB","CCCCCC","DDDDDD"]
+    private var selectedCategorys = ["环境安全","厂区安全","人员安全","设备安全"]
     @State var selectedCategory:Int = 0
     //@State var feebackDetail = ""
     var body: some View {
@@ -118,12 +118,6 @@ struct FeedbackView: View {
                         }
                         
                         Text("上传图片").font(.title2)
-                        
-                        
-                        
-                        //                                Text(String(newCoordinate2D?.latitude ?? 0))
-                        //                                Text(String(newCoordinate2D?.longitude ?? 0))
-                        //
                         ScrollView(.horizontal,showsIndicators: false){
                             HStack{
                                 

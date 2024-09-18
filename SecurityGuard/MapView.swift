@@ -10,7 +10,7 @@ import MapKit
 
 struct MapView: View {
     //@State private var cameraPosition:MapCameraPosition = .userLocation(fallback: .automatic)
-    @State private var cameraPosition:MapCameraPosition = .automatic
+    @State var cameraPosition:MapCameraPosition = .automatic
     @State private var locationManager = LocationManager()
     @State var showMarker: Bool = false
     @State var showSaftyArea: Bool = false
@@ -18,7 +18,7 @@ struct MapView: View {
     @State var mapViewModel : MapViewModel?
     @Binding var newCoordinate2D :CLLocationCoordinate2D?
     var body: some View {
-        ZStack(alignment: .topTrailing){
+        ZStack(alignment: .topLeading){
             MapReader{ proxy in
                 Map(position: $cameraPosition){
                     UserAnnotation()
@@ -60,7 +60,7 @@ struct MapView: View {
                     
                     //customer Mark
                     if let newMark = newCoordinate2D{
-                        Marker("xxxx",coordinate: newMark)
+                        Marker("",coordinate: newMark)
                     }
                     
                 }
@@ -99,9 +99,23 @@ struct MapView: View {
                         .foregroundStyle(.white)
                         .padding([.leading,.trailing],8)
                         .background(.pink)
-                }.padding([.leading],50)
+                }.padding([.leading],10)
                     .padding([.top,.trailing],10)
             }
         }
     }
+    func updateCameraPostion(){
+    if let userLocation = locationManager.userLocation{
+        let userRegion = MKCoordinateRegion(
+            center: userLocation.coordinate,
+            latitudinalMeters: 0.15,
+            longitudinalMeters: 0.15
+        )
+        withAnimation()
+        {
+            cameraPosition = .region(userRegion)
+        }
+    }
+}
+    
 }
